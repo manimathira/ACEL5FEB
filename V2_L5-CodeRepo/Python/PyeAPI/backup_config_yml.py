@@ -1,5 +1,6 @@
-import yml
+import yaml
 import os
+import pyeapi
 
 pyeapi.load_config('eapi.conf')
 
@@ -8,8 +9,9 @@ exists = os.path.exists(directory)
 if not exists:
     os.makedirs(directory)
 
-switches = ['leaf1', 'leaf2', 'leaf3', 'leaf4', 'spine1', 'spine2', 'spine3', 'spine4', 'borderleaf1', 'borderleaf2']
-
+file = open('switches.yaml', 'r' )
+switches_raw = file.read()
+switches = yaml.safe_load(switches_raw)
 for switch in switches:
     connect = pyeapi.connect_to(switch)
     running_config = connect.get_config(as_string='True')
