@@ -3,7 +3,7 @@ all:
     CVP_cluster:
       vars:
           ansible_user: arista
-          ansible_password: PASSWORD-GOES-HERE
+          ansible_password: arista72lc
           ansible_connection: httpapi
           ansible_httpapi_use_ssl: True
           ansible_httpapi_validate_certs: False
@@ -11,12 +11,12 @@ all:
           ansible_httpapi_port: 443
       hosts: 
         cvp1:
-          ansible_host: 192.168.0.5
+          ansible_host: 192.16vv8.0.5
     fabric:
       vars:
         ansible_user: arista
         ansible_network_os: eos
-        ansible_password: PASSWORD-GOES-HERE
+        ansible_password: arista72lc
         ansible_connection: httpapi
         ansible_httpapi_use_ssl: True
         ansible_httpapi_validate_certs: False
