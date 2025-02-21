@@ -1,0 +1,21 @@
+---
+- name: Use the CVP Devices module
+  hosts: CloudVision
+  vars_files: 
+    - /home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/vars/CVP_Model.yml
+  tasks:
+    - name: upload configlets
+      arista.cvp.cv_configlet_v3:
+        configlets: "{{ CVP_Configlets }}"
+        state: present
+    - name: add leafs to containers
+      arista.cvp.cv_device_v3:
+        devices: "{{ CVP_Devices }}"
+        apply_mode: loose
+      register: CVP_Tasks
+
+    - name: Run CVP tasks from the previous ansible task
+      arista.cvp.cv_task_v3:
+        tasks: "{{ CVP_Tasks.taskIds }}"
+        
+        

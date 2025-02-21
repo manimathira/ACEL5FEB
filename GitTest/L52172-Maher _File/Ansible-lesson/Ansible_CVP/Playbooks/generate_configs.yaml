@@ -1,0 +1,23 @@
+---
+- name: create interfaces
+  hosts: leafs, spine1, spine2, spine3
+  tasks:
+    - name: load underlay variable
+      include_vars: 
+        file: /home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/vars/underlay.yaml
+        name: underlay
+
+    # - name: print underlay
+    #   debug:
+    #     msg: "udnerlay is {{ underlay }}" 
+
+    - name: create device directory
+      file: 
+        path: /home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/configs/{{ inventory_hostname }}
+        state: directory
+
+    - name: create interface configs
+      template: 
+        src:  /home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/templates/create_interfaces.j2
+        dest: /home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/configs/{{ inventory_hostname }}/{{ inventory_hostname }}_interfaces.cfg
+        

@@ -1,0 +1,314 @@
+
+---
+global:
+  mtu: 9214
+spines:
+  spine1:
+    asn: 65100
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.101
+        mask: 32
+    interfaces:
+      Ethernet3:
+        ipv4: 192.168.103.1
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.7
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.13
+        mask: 31
+      Ethernet6:
+        ipv4: 192.168.103.19
+        mask: 31
+      Ethernet7:
+        ipv4: 192.168.103.25
+        mask: 31
+      Ethernet8:
+        ipv4: 192.168.103.31
+        mask: 31
+    bgp:
+      remote-as:
+        - 65101
+        - 65101
+        - 65102
+        - 65102
+        - 65103
+        - 65103
+   
+      peers:
+        - 192.168.103.0
+        - 192.168.103.6
+        - 192.168.103.12
+        - 192.168.103.18
+        - 192.168.103.24
+        - 192.168.103.30
+  spine2:
+    asn: 65100
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.102
+        mask: 32
+    interfaces:
+      Ethernet3:
+        ipv4: 192.168.103.3
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.9
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.15
+        mask: 31
+      Ethernet6:
+        ipv4: 192.168.103.21
+        mask: 31
+      Ethernet7:
+        ipv4: 192.168.103.27
+        mask: 31
+      Ethernet8:
+        ipv4: 192.168.103.33
+        mask: 31
+    bgp:
+      remote-as:
+        - 65101
+        - 65101
+        - 65102
+        - 65102
+        - 65103
+        - 65103
+      peers:
+        - 192.168.103.2
+        - 192.168.103.8
+        - 192.168.103.14
+        - 192.168.103.20
+        - 192.168.103.26
+        - 192.168.103.32
+  spine3:
+    asn: 65100
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.103
+        mask: 32
+    interfaces:
+      Ethernet3:
+        ipv4: 192.168.103.5
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.11
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.17
+        mask: 31
+      Ethernet6:
+        ipv4: 192.168.103.23
+        mask: 31
+      Ethernet7:
+        ipv4: 192.168.103.29
+        mask: 31
+      Ethernet8:
+        ipv4: 192.168.103.35
+        mask: 31
+    bgp:
+      remote-as:
+        - 65101
+        - 65101
+        - 65102
+        - 65102
+        - 65103
+        - 65103
+      peers:
+        - 192.168.103.4
+        - 192.168.103.10
+        - 192.168.103.16
+        - 192.168.103.22
+        - 192.168.103.28
+        - 192.168.103.34
+leafs:
+  leaf1:
+    asn: 65101
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.11
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.11
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.1
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.0
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.2
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.4
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.1
+        - 192.168.103.3
+        - 192.168.103.5
+  leaf2:
+    asn: 65101
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.12
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.11
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.2
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.6
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.8
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.10
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.7
+        - 192.168.103.9
+        - 192.168.103.11
+  leaf3:
+    asn: 65102
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.13
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.13
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.1
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.12
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.14
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.16
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.13
+        - 192.168.103.15
+        - 192.168.103.17
+  leaf4:
+    asn: 65102
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.14
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.13
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.2
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.18
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.20
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.22
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.19
+        - 192.168.103.21
+        - 192.168.103.23
+borderleafs:
+  borderleaf1:
+    asn: 65103
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.101.21
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.21
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.1
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.24
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.26
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.28
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.25
+        - 192.168.103.27
+        - 192.168.103.29
+  borderleaf2:
+    asn: 65103
+    loopbacks:
+      loopback0:
+        ipv4: 192.168.102.22
+        mask: 32
+      loopback1:
+        ipv4: 192.168.102.21
+        mask: 32
+    interfaces:
+      vlan 4094: 
+        ipv4: 172.16.255.2
+        mask: 30
+      Ethernet3:
+        ipv4: 192.168.103.30
+        mask: 31
+      Ethernet4:
+        ipv4: 192.168.103.32
+        mask: 31
+      Ethernet5:
+        ipv4: 192.168.103.34
+        mask: 31
+    bgp:
+      remote-as:
+        - 65100
+        - 65100
+        - 65100
+      peers:
+        - 192.168.103.31
+        - 192.168.103.33
+        - 192.168.103.35

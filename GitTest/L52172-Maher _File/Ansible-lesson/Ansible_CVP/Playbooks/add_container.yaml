@@ -1,0 +1,11 @@
+---
+- name: add containers
+  hosts: CloudVision
+  vars_files: 
+    - /home/coder/project/labfiles/L521725/Ansible-lesson/Ansibel_CVP/vars/CVP_Model.yml
+  tasks:
+    - name: Build containers
+      arista.cvp.cv_container_v3:
+        topology: "{{ CVP_containers }}"
+
+          

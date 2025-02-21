@@ -1,0 +1,16 @@
+---
+- name: add keys
+  hosts: DC1
+  tasks:
+   - name: add new user
+     eos_user:
+       name: Mo
+       privilege: 15
+       role: network-admin
+       state: present
+       nopassword: yes
+   - name: add keys
+     eos_user:
+       name: Mo
+       sshkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcNrtslnsnfYGLDaQ4jPQJh/jsE0HDthYBIfxKyPts+FcWacrocf/IrfRmwLpE4z2EmzcR3cuqaZPG1GTUcnCAe2e+gPtZnk398vGPpRfw8M8xl+olNdnU3I1nHqTvmgt8q1Ebrf6scbYZuHtn8Op+xY6htKeNAwProUl2U/KvrFvpmpZH2GNnoRwEy52NJatvalFrXhXMJQKxr5UymXcDql484x0r8jbUOwbvKrYexeIbZ5pfhIJSAax58XSU3G3/RK6fwamMe63e2xZGs+sV763ZUifV/ZN4m2ZS4n4a6q1ypz0fDGE3qvPhPOVCNgyhS0gMtYluVWtdslEfY0LGSE5/F6ZjX9P4SMvg3odP/J3kI1A2DTSot6mLslSilePZ0FAIVnDDmIDzl6Jr4QJ79zBFQWznYQ6Xf2cgXS/BchT+QqksLpKlLpdv2QcIGo/pn2iqmDlUCwrIl1iI7X+zoQ0W1es73fases7datVqZUCZX40Qsa53yUKoZ8pm2xc= coder@9c52094d7353
+

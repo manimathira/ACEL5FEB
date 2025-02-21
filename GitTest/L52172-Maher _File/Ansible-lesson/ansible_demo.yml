@@ -1,0 +1,12 @@
+---
+- name: Ansible_demo
+  hosts: leaf1,DC1
+  tasks:
+    - name: load variable file
+      include_vars: 
+          file: /home/coder/project/labfiles/L521725/infra.yml
+          name: underlay
+
+    - name: print variable
+      debug:
+        msg: "this is my variable {{ underlay }}"

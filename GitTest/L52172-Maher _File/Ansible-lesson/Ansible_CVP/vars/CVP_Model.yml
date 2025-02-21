@@ -1,0 +1,46 @@
+path: "/home/coder/project/labfiles/L521725/Ansible-lesson/Ansible_CVP/configs"
+CVP_Configlets:
+  add_vlan: "{{lookup('file','{{path}}/add_vlans.cfg')}}"
+  leaf1_interfaces: "{{lookup('file','{{path}}/leaf1/leaf1_interfaces.cfg')}}"
+  leaf2_interfaces: "{{lookup('file','{{path}}/leaf2/leaf2_interfaces.cfg')}}"
+  leaf3_interfaces: "{{lookup('file','{{path}}/leaf3/leaf3_interfaces.cfg')}}"
+  leaf4_interfaces: "{{lookup('file','{{path}}/leaf4/leaf4_interfaces.cfg')}}"
+
+
+
+CVP_containers:
+  MLAG_Left:
+    parentContainerName: Leaf
+    configlets: 
+      - 'ODD-MLAG'
+  MLAG_Right:
+    parentContainerName: Leaf
+    configlets: 
+      - 'EVEN-MLAG'
+
+CVP_Devices:
+  - fqdn: 'leaf1'
+    parentContainerName: 'MLAG_Left'
+    configlets: 
+      - 'leaf1_mlag'
+      - 'add_vlan'
+      - 'leaf1_interfaces'
+  - fqdn: 'leaf3'
+    parentContainerName: 'MLAG_Left'
+    configlets: 
+      - 'leaf3_mlag'
+      - 'add_vlan'
+      - 'leaf3_interfaces'
+  - fqdn: 'leaf2'
+    parentContainerName: 'MLAG_Right'
+    configlets: 
+      - 'leaf2_mlag'
+      - 'add_vlan'
+      - 'leaf2_interfaces'
+  - fqdn: 'leaf4'
+    parentContainerName: 'MLAG_Right'
+    configlets: 
+      - 'leaf4_mlag'
+      - 'add_vlan'
+      - 'leaf4_interfaces'
+  

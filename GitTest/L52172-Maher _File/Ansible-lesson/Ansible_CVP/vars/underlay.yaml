@@ -1,0 +1,118 @@
+
+---
+leaf1:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.0
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.2
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.4
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.41
+      mask: 31
+leaf2:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.6
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.8
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.10
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.43
+      mask: 31
+leaf3:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.12
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.14
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.16
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.45
+      mask: 31
+leaf4:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.18
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.20
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.22
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.47
+      mask: 31
+spine1:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.1
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.7
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.13
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.19
+      mask: 31
+    Ethernet7:
+      ipv4: 192.168.103.25
+      mask: 31
+    Ethernet8:
+      ipv4: 192.168.103.31
+      mask: 31
+spine2:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.3
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.9
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.15
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.21
+      mask: 31
+    Ethernet7:
+      ipv4: 192.168.103.27
+      mask: 31
+    Ethernet8:
+      ipv4: 192.168.103.33
+      mask: 31
+spine3:
+  interfaces:
+    Ethernet3:
+      ipv4: 192.168.103.5
+      mask: 31
+    Ethernet4:
+      ipv4: 192.168.103.11
+      mask: 31
+    Ethernet5:
+      ipv4: 192.168.103.17
+      mask: 31
+    Ethernet6:
+      ipv4: 192.168.103.23
+      mask: 31
+    Ethernet7:
+      ipv4: 192.168.103.29
+      mask: 31
+    Ethernet8:
+      ipv4: 192.168.103.35
+      mask: 31

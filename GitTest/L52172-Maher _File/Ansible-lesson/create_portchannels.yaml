@@ -1,0 +1,97 @@
+---
+- name: configure host1
+  hosts: host1
+  tasks:
+         - name: Configure static routes on Arista EOS
+           arista.eos.eos_static_routes:
+             config:
+               - address_families:
+                   - afi: ipv4
+                     routes:
+                       - dest: 10.10.20.0/24
+                         next_hops:
+                           - forward_router_address: 10.10.10.1
+             state: merged
+         - name: create Portchannel
+           arista.eos.eos_lag_interfaces:
+             config:
+               - name: Port-Channel1
+                 members:
+                   - member: Ethernet1
+                     mode: active
+                   - member: Ethernet2
+                     mode: active
+                   - member: Ethernet3
+                     mode: active
+                   - member: Ethernet4
+                     mode: active
+             state: merged 
+             
+         - name: Configure L3 Interface
+           arista.eos.eos_interfaces:
+             config:
+               - name: Port-Channel1
+                 enabled: true
+                 mode: layer3
+               
+             
+         - name: Configure Interface ip address        
+           arista.eos.eos_l3_interfaces:
+             config:
+               - name: Port-Channel1
+                 ipv4:
+                   - address: 10.10.10.11/24
+             state: merged
+            
+
+- name: configure host2
+  hosts: host2
+  tasks:
+         - name: Configure static routes on Arista EOS
+           arista.eos.eos_static_routes:
+             config:
+               - address_families:
+                   - afi: ipv4
+                     routes:
+                       - dest: 10.10.10.0/24
+                         next_hops:
+                           - forward_router_address: 10.10.20.1
+             state: merged
+         - name: create Portchannel
+           arista.eos.eos_lag_interfaces:
+             config:
+               - name: Port-Channel1
+                 members:
+                   - member: Ethernet1
+                     mode: active
+                   - member: Ethernet2
+                     mode: active
+                   - member: Ethernet3
+                     mode: active
+                   - member: Ethernet4
+                     mode: active
+             state: merged 
+             
+         - name: Configure L3 Interface
+           arista.eos.eos_interfaces:
+             config:
+               - name: Port-Channel1
+                 enabled: true
+                 mode: layer3
+               
+             
+         - name: Configure Interface ip address        
+           arista.eos.eos_l3_interfaces:
+             config:
+               - name: Port-Channel1
+                 ipv4:
+                   - address: 10.10.20.12/24
+             state: merged
+            
+- name: Save config
+  hosts: host1-DC2, host2-DC2
+  tasks:
+  - name: copy run start
+    arista.eos.command:
+      commands:
+        - 'copy run start'

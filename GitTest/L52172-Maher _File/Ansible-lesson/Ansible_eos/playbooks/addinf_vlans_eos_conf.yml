@@ -1,0 +1,8 @@
+---
+- name: addingvlans
+  hosts: leafs
+  tasks:
+    - name: create vlansusing config module
+      arista.eos.eos_config:
+        src: vlans.cfg
+        save_when: always
